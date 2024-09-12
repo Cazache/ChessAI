@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour
     // Switch to the next player's turn
     public void NextTurn()
     {
+        if(gameOver) { return; }
+
         if (currentPlayer == "white")
         {
             currentPlayer = "black";  // Switch to black player's turn
@@ -184,7 +186,7 @@ public class GameManager : MonoBehaviour
         positions[newPosition.x, newPosition.y] = piece;
 
         // Wait for a short duration to ensure smooth transition before changing the turn
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.3f);
 
         // Switch to the next player's turn
         NextTurn();
